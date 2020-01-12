@@ -6,7 +6,7 @@
     "default_title": "SAMPLE_2",
     "default_popup": "popup.html"
   },
-
+  "permissions": [ "storage", "unlimitedStorage", "tabs", "activeTab", "webRequest", "webRequestBlocking", "downloads", "http://*/*", "https://*/*" ],
   "content_scripts": [
     {
       "js": ["jquery-3.4.1.min.js", "content_script.js"],
