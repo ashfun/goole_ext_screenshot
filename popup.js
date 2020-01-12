@@ -24,7 +24,11 @@ $("#green").on("click", () => {
   chrome.tabs.captureVisibleTab(null, {}, function (imageURI) {
      //console.log(image); //the image variable is a base64 encoded image which you should be able to load in either canvas or src attribute of an image.
      var url = imageURI.replace(/^data:image\/[^;]/, 'data:application/octet-stream')
-     window.open(url);
+     //window.open(url);
+     chrome.downloads.download({
+       url: url,
+       filename: 'test.png'
+     });
   });
 });
 //https://www.codepool.biz/chrome-extension-to-save-web-page-screenshots-to-local-disk.html
