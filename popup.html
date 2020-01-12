@@ -7,15 +7,31 @@
     <script src="jquery-3.4.1.min.js"></script>
     <style>
       body {
-        width: 100px;
+        width: 200px;
       }
     </style>
   </head>
   <body>
-    <button id="black">背景を黒にする!</button>
-    <button id="red">背景を赤にする!</button>
-    <button id="green">screenshot!</button>
-    <button id="screenshot">screenshot!!!</button>
+    <div>
+      <div id="sample_left" style="float: left; width: 120px;">
+        <div id="sample_drawing_outside" style="background-color: #696969; width: 100px; height: 30px; padding: 10px;">
+          <div id="sample_drawing_target" style="background-color: #FFFFFF; border: solid 5px #ffd700; width: 90px; height: 20px;">---.--.</div>
+        </div>
+      </div>
+      <div id="sample_right" style="float: right; width: 80px;">
+        <select id="border_color" name="example">
+          <option value="yellow">yellow</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+        </select>
+      </div>
+    </div>
+    <!--orm method="post" action="">
+      <input type="radio" name="q1" value="はい"><span style="color: #ffd700">■</span>
+      <input type="radio" name="q1" value="いいえ"><span>-</span>
+    </form-->
+    <button id="focus_mode">Focus on an element</button>
+    <button id="screenshot">Screenshot</button>
     <script src="popup.js"></script>
   </body>
 </html>
