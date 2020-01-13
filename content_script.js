@@ -1,10 +1,10 @@
 isOn = false;
-borderColor = borderColorSet['yellow'];
 borderColorSet = {
   'yellow': 'rgb(255, 215, 0)',
   'red': 'rgb(220, 20, 60)',
   'blue': 'rgb(0, 0, 205)'
 }
+borderColor = borderColorSet['yellow'];
 
 chrome.runtime.onMessage.addListener(function(msg) {
   //$('body').html('<div id="screenshot_layer"></div>');

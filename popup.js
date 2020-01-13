@@ -33,7 +33,7 @@ $("#screenshot").on("click", () => {
      //window.open(url);
      //var test = location.href;
      var test = 'screenshot';
-     var date = new Date() ;
+     var date = new Date();
      var date_string = String(date.getTime());
      chrome.tabs.query({"active": true}, function (tab) {
          test = String(tab[0].url);
