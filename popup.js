@@ -31,9 +31,22 @@ $("#screenshot").on("click", () => {
      //console.log(image); //the image variable is a base64 encoded image which you should be able to load in either canvas or src attribute of an image.
      var url = imageURI.replace(/^data:image\/[^;]/, 'data:application/octet-stream')
      //window.open(url);
-     chrome.downloads.download({
-       url: url,
-       filename: 'test.png'
+     //var test = location.href;
+     var test = 'screenshot';
+     var date = new Date() ;
+     var date_string = String(date.getTime());
+     chrome.tabs.query({"active": true}, function (tab) {
+         test = String(tab[0].url);
+         //alert(test);
+         //chrome.tabs.remove(tab[0].id); //切り替わったタブを削除
+         test = test.toLowerCase();
+         test = test.replace('/([a-z])+:\/\//', '');
+         test = test.substr(test.indexOf('://')+3);
+         result = test.replace(/[^a-z0-9]/g, '-');
+         chrome.downloads.download({
+           url: url,
+           filename: result + date_string + '.png'
+         });
      });
   });
 });

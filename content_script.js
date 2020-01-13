@@ -1,17 +1,5 @@
-/*chrome.runtime.onMessage.addListener(function(msg) {
-  $("body").css("background-color", msg.color);
-});*/
-
-/*chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
-    if (msg.ready === "ready") {
-        if (confirm('Do you want to have a capture of this screen?')) {
-            sendResponse({download : "download"});
-        }
-    }
-});*/
-
 isOn = false;
-borderColor = 'rgb(255, 215, 0)';
+borderColor = borderColorSet['yellow'];
 borderColorSet = {
   'yellow': 'rgb(255, 215, 0)',
   'red': 'rgb(220, 20, 60)',
