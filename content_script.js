@@ -12,14 +12,22 @@
 
 isOn = false;
 borderColor = 'rgb(255, 215, 0)';
+borderColorSet = {
+  'yellow': 'rgb(255, 215, 0)',
+  'red': 'rgb(220, 20, 60)',
+  'blue': 'rgb(0, 0, 205)'
+}
 
 chrome.runtime.onMessage.addListener(function(msg) {
   //$('body').html('<div id="screenshot_layer"></div>');
   //$('body').append('<div id="google_ext_screenshot_layer" style="background: none; width: 1440px; height: 2506px; z-index: 2147483647; position: absolute; top: 0px; left: 0px;"><canvas id="google_ext_screenshot_layer_canvas" width="1440" height="2506" style="background-color: position: absolute; top: 0; margin: 0px; padding: 0px; display: block;　pointer-events: none;"></canvas></div>');
   if (msg.type === 'drawing') {
-    var screenWidth = document.documentElement.scrollWidth;
-    var screenHeight = document.documentElement.scrollHeight;
-    $('body').append('<canvas id="google_ext_screenshot_layer_canvas" width="' + String(screenWidth) + '" height="'+ String(screenHeight) +'" style="pointer-events: none; background: none; z-index: 2147483647; position: absolute; top: 0; left: 0px; margin: 0px; padding: 0px; display: block;"></canvas>');
+    if (document.getElementById("google_ext_screenshot_layer_canvas") == null) {
+      var screenWidth = document.documentElement.scrollWidth;
+      var screenHeight = document.documentElement.scrollHeight;
+      $('body').append('<canvas id="google_ext_screenshot_layer_canvas" width="' + String(screenWidth) + '" height="'+ String(screenHeight) +'" style="pointer-events: none; background: none; z-index: 2147483647; position: absolute; top: 0; left: 0px; margin: 0px; padding: 0px; display: block;"></canvas>');
+    }
+    borderColor = borderColorSet[msg.border_color];
     var canvas = document.getElementById("google_ext_screenshot_layer_canvas");
     var ctx = canvas.getContext("2d");
     //白でぬりつぶす
@@ -28,14 +36,20 @@ chrome.runtime.onMessage.addListener(function(msg) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     isOn = true;
   }
+  if (msg.type === 'reset') {
+    var canvas = document.getElementById("google_ext_screenshot_layer_canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+  }
   if (msg.type === 'color_change') {
-    if (msg.border_color === 'yellow') {
+    /*if (msg.border_color === 'yellow') {
       borderColor = 'rgb(255, 215, 0)';
     } else if (msg.border_color === 'red') {
       borderColor = 'rgb(220, 20, 60)'; //#dc143c
     } else {
       borderColor = 'rgb(0, 0, 205)'; //#0000cd
-    }
+    }*/
+    borderColor = borderColorSet[msg.border_color];
   }
 });
 

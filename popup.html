@@ -7,31 +7,93 @@
     <script src="jquery-3.4.1.min.js"></script>
     <style>
       body {
-        width: 200px;
+        width: 300px;
+        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+        color: #666666;
+        font-size: 0.5em;
+      }
+
+      .cp_ipselect {
+      	overflow: hidden;
+      	width: 100%;
+      	/*margin: 2em auto;*/
+      	text-align: center;
+        font-size: initial;
+      }
+      .cp_ipselect select {
+      	width: 100%;
+      	padding-right: 1em;
+      	cursor: pointer;
+      	text-indent: 0.01px;
+      	text-overflow: ellipsis;
+      	border: none;
+      	outline: none;
+      	background: transparent;
+      	background-image: none;
+      	box-shadow: none;
+      	-webkit-appearance: none;
+      	appearance: none;
+      }
+      .cp_ipselect select::-ms-expand {
+          display: none;
+      }
+      .cp_ipselect.cp_sl01 {
+      	position: relative;
+      	border: 1px solid #bbbbbb;
+      	border-radius: 2px;
+      	background: #ffffff;
+      }
+      .cp_ipselect.cp_sl01::before {
+      	position: absolute;
+      	top: 0.8em;
+      	right: 0.9em;
+      	width: 0;
+      	height: 0;
+      	padding: 0;
+      	content: '';
+      	border-left: 6px solid transparent;
+      	border-right: 6px solid transparent;
+      	border-top: 6px solid #666666;
+      	pointer-events: none;
+      }
+      .cp_ipselect.cp_sl01 select {
+      	padding: 8px 38px 8px 8px;
+      	color: #666666;
       }
     </style>
   </head>
   <body>
     <div>
-      <div id="sample_left" style="float: left; width: 120px;">
+      <div id="sample_left" style="float: left; width: 120px; height: 50px;">
         <div id="sample_drawing_outside" style="background-color: #696969; width: 100px; height: 30px; padding: 10px;">
           <div id="sample_drawing_target" style="background-color: #FFFFFF; border: solid 5px #ffd700; width: 90px; height: 20px;">---.--.</div>
         </div>
       </div>
-      <div id="sample_right" style="float: right; width: 80px;">
-        <select id="border_color" name="example">
+      <div id="sample_right" style="float: left; width: 170px; height: 50px; padding-left: 10px;">
+        <!--select id="border_color" name="example">
           <option value="yellow">yellow</option>
           <option value="red">red</option>
           <option value="blue">blue</option>
-        </select>
+        </select-->
+        Border color:
+        <div class="cp_ipselect cp_sl01">
+          <select id="border_color">
+            <option value="yellow">yellow</option>
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+          </select>
+        </div>
       </div>
     </div>
     <!--orm method="post" action="">
       <input type="radio" name="q1" value="はい"><span style="color: #ffd700">■</span>
       <input type="radio" name="q1" value="いいえ"><span>-</span>
     </form-->
-    <button id="focus_mode">Focus on an element</button>
-    <button id="screenshot">Screenshot</button>
+    <div class="button_area">
+      <button id="focus_mode">Focus on an element</button>
+      <button id="reset_mode">Reset Focus on an element</button>
+      <button id="screenshot">Screenshot</button>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
