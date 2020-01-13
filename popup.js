@@ -43,13 +43,6 @@ select.onchange = function()
 {
   // 選択されているoption要素を取得する
   var selectedItem = this.options[ this.selectedIndex ];
-  //alert( selectedItem.value );
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {
-      type: "color_change",
-      border_color: selectedItem.value,
-    });
-  });
   borderColor = selectedItem.value;
   localStorage.setItem("border_color", borderColor);
   $("#sample_drawing_target").css("border", cssBorderSet[borderColor]);

@@ -41,16 +41,6 @@ chrome.runtime.onMessage.addListener(function(msg) {
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
   }
-  if (msg.type === 'color_change') {
-    /*if (msg.border_color === 'yellow') {
-      borderColor = 'rgb(255, 215, 0)';
-    } else if (msg.border_color === 'red') {
-      borderColor = 'rgb(220, 20, 60)'; //#dc143c
-    } else {
-      borderColor = 'rgb(0, 0, 205)'; //#0000cd
-    }*/
-    borderColor = borderColorSet[msg.border_color];
-  }
 });
 
 $('html').mousemove(function (e) {
