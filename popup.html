@@ -13,6 +13,17 @@
         font-size: 0.5em;
       }
 
+      .main_area {
+        width: 280px;
+        padding: 10px;
+      }
+
+      .button_area {
+        width: 280px;
+        float: left;
+        padding: 10px;
+      }
+
       .cp_ipselect {
       	overflow: hidden;
       	width: 100%;
@@ -60,41 +71,89 @@
       	padding: 8px 38px 8px 8px;
       	color: #666666;
       }
+
+      .btn-gradient-radius {
+        text-align: center;
+        width: 80%;
+        display: inline-block;
+        padding: 7px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #FFF;
+        background-image: linear-gradient(45deg, #ff8b5f 0%, #FFC107 100%);
+        transition: .4s;
+        margin: 5px;
+        font-size: 1.4em;
+      }
+
+      .btn-gradient-radius:hover {
+        background-image: linear-gradient(45deg, #f76a35 0%, #FFC107 100%);
+      }
+
+      .btn-gradient-radius2 {
+        text-align: center;
+        width: 80%;
+        display: inline-block;
+        padding: 7px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #ff8b5f;
+        border: 1px solid #ff8b5f;
+        background-color: #fff;
+        transition: .4s;
+        margin: 5px;
+        font-size: 1.4em;
+      }
+
+      .btn-gradient-radius2:hover {
+        color: #f76a35;
+        border: 1px solid #f76a35;
+        background-color: #FFF4EF;
+        /*background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);*/
+      }
+
+      .btn-gradient-radius3 {
+        text-align: center;
+        width: 80%;
+        display: inline-block;
+        padding: 7px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #FFF;
+        background-image: linear-gradient(45deg, #37C692 0%, #7BEE98 100%);
+        transition: .4s;
+        margin: 5px;
+        font-size: 1.4em;
+      }
+
+      .btn-gradient-radius3:hover {
+        background-image: linear-gradient(45deg, #22936B 0%, #5BCC78 100%);
+      }
     </style>
   </head>
   <body>
-    <div>
+    <div class="main_area">
       <div id="sample_left" style="float: left; width: 120px; height: 50px;">
         <div id="sample_drawing_outside" style="background-color: #696969; width: 100px; height: 30px; padding: 10px;">
           <div id="sample_drawing_target" style="background-color: #FFFFFF; border: solid 5px #ffd700; width: 90px; height: 20px;">---.--.</div>
         </div>
       </div>
-      <div id="sample_right" style="float: left; width: 170px; height: 50px; padding-left: 10px;">
-        <!--select id="border_color" name="example">
-          <option value="yellow">yellow</option>
-          <option value="red">red</option>
-          <option value="blue">blue</option>
-        </select-->
+      <div id="sample_right" style="float: left; width: 150px; height: 50px; padding-left: 10px;">
         Border color:
         <div class="cp_ipselect cp_sl01">
           <select id="border_color">
-            <option value="yellow">yellow</option>
-            <option value="red">red</option>
-            <option value="blue">blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
           </select>
         </div>
       </div>
     </div>
-    <!--orm method="post" action="">
-      <input type="radio" name="q1" value="はい"><span style="color: #ffd700">■</span>
-      <input type="radio" name="q1" value="いいえ"><span>-</span>
-    </form-->
     <div class="button_area">
-      <button id="focus_mode">Focus on an element</button>
-      <button id="reset_mode">Reset Focus on an element</button>
-      <button id="screenshot">Screenshot</button>
+      <a href="#" class="btn-gradient-radius" id="focus_mode">Focus on an element</a>
+      <a href="#" class="btn-gradient-radius2" id="reset_mode">Clear drawing</a>
+      <a href="#" class="btn-gradient-radius3" id="screenshot">Take a screenshot</a>
     </div>
     <script src="popup.js"></script>
   </body>
 </html>
-<!-- https://qiita.com/ampersand/items/e690dc140736683c25ec -->
