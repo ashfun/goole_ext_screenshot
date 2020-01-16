@@ -5,142 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="jquery-3.4.1.min.js"></script>
-    <style>
-      body {
-        width: 300px;
-        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-        color: #666666;
-        font-size: 0.5em;
-      }
-
-      .main_area {
-        width: 280px;
-        padding: 10px;
-      }
-
-      .button_area {
-        width: 280px;
-        float: left;
-        padding: 10px;
-      }
-
-      .cp_ipselect {
-      	overflow: hidden;
-      	width: 100%;
-      	/*margin: 2em auto;*/
-      	text-align: center;
-        font-size: initial;
-      }
-      .cp_ipselect select {
-      	width: 100%;
-      	padding-right: 1em;
-      	cursor: pointer;
-      	text-indent: 0.01px;
-      	text-overflow: ellipsis;
-      	border: none;
-      	outline: none;
-      	background: transparent;
-      	background-image: none;
-      	box-shadow: none;
-      	-webkit-appearance: none;
-      	appearance: none;
-      }
-      .cp_ipselect select::-ms-expand {
-          display: none;
-      }
-      .cp_ipselect.cp_sl01 {
-      	position: relative;
-      	border: 1px solid #bbbbbb;
-      	border-radius: 2px;
-      	background: #ffffff;
-      }
-      .cp_ipselect.cp_sl01::before {
-      	position: absolute;
-      	top: 0.8em;
-      	right: 0.9em;
-      	width: 0;
-      	height: 0;
-      	padding: 0;
-      	content: '';
-      	border-left: 6px solid transparent;
-      	border-right: 6px solid transparent;
-      	border-top: 6px solid #666666;
-      	pointer-events: none;
-      }
-      .cp_ipselect.cp_sl01 select {
-      	padding: 8px 38px 8px 8px;
-      	color: #666666;
-      }
-
-      .btn-gradient-radius {
-        text-align: center;
-        width: 80%;
-        display: inline-block;
-        padding: 7px 20px;
-        border-radius: 25px;
-        text-decoration: none;
-        color: #FFF;
-        background-image: linear-gradient(45deg, #ff8b5f 0%, #FFC107 100%);
-        transition: .4s;
-        margin: 5px;
-        font-size: 1.4em;
-      }
-
-      .btn-gradient-radius:hover {
-        background-image: linear-gradient(45deg, #f76a35 0%, #FFC107 100%);
-      }
-
-      .btn-gradient-radius2 {
-        text-align: center;
-        width: 80%;
-        display: inline-block;
-        padding: 7px 20px;
-        border-radius: 25px;
-        text-decoration: none;
-        color: #ff8b5f;
-        border: 1px solid #ff8b5f;
-        background-color: #fff;
-        transition: .4s;
-        margin: 5px;
-        font-size: 1.4em;
-      }
-
-      .btn-gradient-radius2:hover {
-        color: #f76a35;
-        border: 1px solid #f76a35;
-        background-color: #FFF4EF;
-        /*background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);*/
-      }
-
-      .btn-gradient-radius3 {
-        text-align: center;
-        width: 80%;
-        display: inline-block;
-        padding: 7px 20px;
-        border-radius: 25px;
-        text-decoration: none;
-        color: #FFF;
-        background-image: linear-gradient(45deg, #37C692 0%, #7BEE98 100%);
-        transition: .4s;
-        margin: 5px;
-        font-size: 1.4em;
-      }
-
-      .btn-gradient-radius3:hover {
-        background-image: linear-gradient(45deg, #22936B 0%, #5BCC78 100%);
-      }
-    </style>
+    <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <div class="main_area">
       <div id="sample_left" style="float: left; width: 120px; height: 50px;">
-        <div id="sample_drawing_outside" style="background-color: #CCCCCC; width: 100px; height: 30px; padding: 10px;">
-          <div id="sample_drawing_target" style="background-color: #FFFFFF; border: solid 5px #ffd700; width: 90px; height: 20px;">---.--.</div>
+        <div
+          id="sample_drawing_outside"
+          style="background-color: #CCCCCC; width: 100px; height: 30px; padding: 10px;"
+        >
+          <div
+            id="sample_drawing_target"
+            style="background-color: #FFFFFF; border: solid 5px #ffd700; width: 90px; height: 20px; font-size: 1.5em;"
+          >
+            -----.----.
+          </div>
         </div>
       </div>
-      <div id="sample_right" style="float: left; width: 150px; height: 50px; padding-left: 10px;">
+      <div
+        id="sample_right"
+        style="float: left; width: 150px; height: 50px; padding-left: 10px;"
+      >
         Border color:
-        <div class="cp_ipselect cp_sl01">
+        <div class="select-border-color select-list">
           <select id="border_color">
             <option value="yellow">Yellow</option>
             <option value="red">Red</option>
@@ -150,9 +37,15 @@
       </div>
     </div>
     <div class="button_area">
-      <a href="#" class="btn-gradient-radius" id="focus_mode">Focus on an element</a>
-      <a href="#" class="btn-gradient-radius2" id="reset_mode">Clear drawing</a>
-      <a href="#" class="btn-gradient-radius3" id="screenshot">Take a screenshot</a>
+      <a href="#" class="btn-gradient-radius-focus" id="focus_mode"
+        >Focus on an element</a
+      >
+      <a href="#" class="btn-gradient-radius-reset" id="reset_mode"
+        >Clear drawing</a
+      >
+      <a href="#" class="btn-gradient-radius-screenshot" id="screenshot"
+        >Take a screenshot</a
+      >
     </div>
     <script src="popup.js"></script>
   </body>
